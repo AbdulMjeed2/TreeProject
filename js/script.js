@@ -43,7 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(`Tree planted! Global total: ${data.total_trees}`);
+          console.log(`Tree planted! Global total: ${data.count}`);
           await loadGlobalStats(); // refresh global stats after planting
         } else {
           console.error('Failed to add tree to database');
