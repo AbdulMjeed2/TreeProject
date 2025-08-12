@@ -9,8 +9,10 @@ const co2Display = document.getElementById("co2");
 const clicksRemainingDisplay = document.getElementById("clicks-remaining");
 const button = document.getElementById("click-button");
 
-// API base URL
-const API_BASE = 'http://localhost:3000/api';
+// API base URL - automatically detect environment
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api' 
+  : '/api';
 
 function updateStats() {
   const oxygenPerTreePerDay = 0.118 * 365; // in kg

@@ -145,7 +145,7 @@ class VirtualGarden {
 
   async loadGlobalStats() {
     try {
-      const response = await fetch('http://localhost:3000/api/total-trees');
+      const response = await fetch(`${API_BASE}/total-trees`);
       if (response.ok) {
         const data = await response.json();
         const totalTrees = data.total_trees || 0;
@@ -207,6 +207,11 @@ class VirtualGarden {
 
 // Global garden instance
 let gardenInstance;
+
+// API base URL - automatically detect environment
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api' 
+  : '/api';
 
 // Initialize garden when page loads
 document.addEventListener('DOMContentLoaded', () => {
