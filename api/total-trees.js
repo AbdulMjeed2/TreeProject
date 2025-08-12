@@ -1,10 +1,11 @@
-const { createClient } = require('@supabase/supabase-js');
+// api/total-trees.js
+import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') {
     res.status(405).send('Method Not Allowed');
     return;
@@ -21,4 +22,4 @@ module.exports = async function handler(req, res) {
   } else {
     res.status(200).json({ total_trees: data?.count || 0 });
   }
-};
+}
