@@ -1,10 +1,11 @@
-const { createClient } = require('@supabase/supabase-js');
+// api/add-tree.js
+import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).send('Method Not Allowed');
     return;
@@ -33,4 +34,4 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-};
+}
